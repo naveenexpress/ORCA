@@ -1,0 +1,687 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Default: Clean Oceanic Light Palette */
+  :root {
+    --color-primary: #1769AA;
+    --color-primary-dark: #123B6D;
+    --color-accent: #19B7C9;
+    --color-background: #F7FBFE;
+    --color-surface: #FFFFFF;
+    --color-surface-soft: #F4FAFD;
+    --color-border: #D7E7F0;
+    --color-text-primary: #123B6D;
+    --color-text-secondary: #55718D;
+    --color-text-muted: #7890A5;
+    --color-success: #16845F;
+    --color-warning: #E7A928;
+    --color-danger: #FC4448;
+
+    --color-marine-deep: #FFFFFF;
+    --color-marine-navy: #FFFFFF;
+    --color-marine-card: #FFFFFF;
+    --color-marine-border: #D7E7F0;
+  }
+
+  /* Dark Mode: Warm Sunset Espresso & Amber Palette */
+  html.dark, .dark {
+    --color-primary: #C05615;
+    --color-primary-dark: #D95202;
+    --color-accent: #F59E0B;
+    --color-background: #140C14;
+    --color-surface: #24181E;
+    --color-surface-soft: #1E1216;
+    --color-border: #452D36;
+    --color-text-primary: #FFF6EE;
+    --color-text-secondary: #D4C2B6;
+    --color-text-muted: #947F75;
+    --color-success: #10B981;
+    --color-warning: #F59E0B;
+    --color-danger: #FC4448;
+
+    --color-marine-deep: #140C14;
+    --color-marine-navy: #1A111B;
+    --color-marine-card: #24181E;
+    --color-marine-border: #452D36;
+  }
+
+  body {
+    background-color: #F7FBFE;
+    color: #123B6D;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .dark body {
+    background-color: #140C14;
+    color: #FFF6EE;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #123B6D;
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: #FFF6EE;
+  }
+
+  /* Custom Light Mode Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #F7FBFE;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #CFE6EF;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1769AA;
+  }
+
+  /* Custom Dark Mode Scrollbar */
+  .dark ::-webkit-scrollbar-track {
+    background: #140C14;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    background: #452D36;
+    border-radius: 3px;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #C05615;
+  }
+}
+
+/* Surface & Card Components — Light Mode */
+.marine-glass {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #D7E7F0;
+  box-shadow: 0 4px 24px rgba(18, 59, 109, 0.08);
+}
+
+.marine-card {
+  background: #FFFFFF;
+  border: 1px solid #D7E7F0;
+  box-shadow: 0 4px 18px rgba(18, 59, 109, 0.06);
+  color: #123B6D;
+  transition: all 0.2s ease-in-out;
+}
+
+.marine-card h1, .marine-card h2, .marine-card h3, .marine-card h4, .marine-card h5, .marine-card h6 {
+  color: #123B6D !important;
+}
+
+.marine-card-hover {
+  transition: all 0.2s ease-in-out;
+}
+.marine-card-hover:hover {
+  border-color: #19B7C9;
+  box-shadow: 0 6px 26px rgba(25, 183, 201, 0.15);
+  transform: translateY(-2px);
+}
+
+.marine-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Surface & Card Components — Dark Mode */
+.dark .marine-glass {
+  background: rgba(36, 24, 30, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #452D36;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.55);
+}
+
+.dark .marine-card {
+  background: #24181E;
+  border: 1px solid #452D36;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+  color: #FFF6EE;
+}
+
+.dark .marine-card h1, .dark .marine-card h2, .dark .marine-card h3, .dark .marine-card h4, .dark .marine-card h5, .dark .marine-card h6 {
+  color: #FFF6EE !important;
+}
+
+.dark .marine-card-hover:hover {
+  border-color: #D9681E;
+  box-shadow: 0 6px 26px rgba(192, 86, 21, 0.22);
+  transform: translateY(-2px);
+}
+
+/* =========================================================================
+   LIGHT MODE: Rules for Marine tokens & Shell Navigation
+   ========================================================================= */
+
+header.sticky {
+  background-color: #FFFFFF !important;
+  border-color: #D7E7F0 !important;
+}
+
+aside {
+  background-color: #FFFFFF !important;
+  border-color: #D7E7F0 !important;
+}
+
+nav a.active,
+aside a.active {
+  background: #E8F8FB !important;
+  color: #123B6D !important;
+  border: 1px solid #CFE6EF !important;
+  border-left: 4px solid #19B7C9 !important;
+  box-shadow: 0 2px 8px rgba(25, 183, 201, 0.12) !important;
+}
+
+nav a.active svg,
+aside a.active svg {
+  color: #1769AA !important;
+}
+
+aside a:not(.active) {
+  color: #55718D !important;
+}
+
+aside a:not(.active):hover {
+  background-color: #F4FAFD !important;
+  color: #123B6D !important;
+}
+
+aside a:not(.active) svg {
+  color: #1769AA !important;
+}
+
+/* Light mode overrides for legacy marine palette classes */
+html:not(.dark) .bg-marine-950 {
+  background-color: #F7FBFE !important;
+}
+
+html:not(.dark) .bg-marine-900 {
+  background-color: #FFFFFF !important;
+}
+
+html:not(.dark) .bg-marine-850 {
+  background-color: #FFFFFF !important;
+}
+
+html:not(.dark) .bg-marine-800 {
+  background-color: #F4FAFD !important;
+}
+
+html:not(.dark) .bg-marine-100 {
+  background-color: #E8F8FB !important;
+}
+
+html:not(.dark) .border-marine-800,
+html:not(.dark) .border-marine-750,
+html:not(.dark) .border-marine-700 {
+  border-color: #D7E7F0 !important;
+}
+
+html:not(.dark) .text-slate-200,
+html:not(.dark) .text-slate-300 {
+  color: #55718D !important;
+}
+
+html:not(.dark) .text-slate-400 {
+  color: #7890A5 !important;
+}
+
+html:not(.dark) .text-slate-100,
+html:not(.dark) .text-slate-50 {
+  color: #123B6D !important;
+}
+
+/* =========================================================================
+   DARK MODE: Warm Sunset Espresso & Golden Amber Overrides
+   Activated when html.dark is present
+   ========================================================================= */
+
+/* Header & Sidebar Background */
+.dark header.sticky {
+  background-color: #1A111B !important;
+  border-color: #3A242B !important;
+}
+
+.dark aside {
+  background-color: #1A111B !important;
+  border-color: #3A242B !important;
+}
+
+/* Active Navlink in Dark Mode: Warm glowing Amber / Orange Gradient */
+.dark nav a.active,
+.dark aside a.active {
+  background: linear-gradient(90deg, #C05615 0%, #A5430E 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid #E06A20 !important;
+  border-left: 4px solid #F59E0B !important;
+  box-shadow: 0 4px 14px rgba(192, 86, 21, 0.45) !important;
+}
+
+.dark nav a.active svg,
+.dark aside a.active svg {
+  color: #FFFFFF !important;
+}
+
+/* Inactive Sidebar Navlink in Dark Mode */
+.dark aside a:not(.active) {
+  color: #D4C2B6 !important;
+}
+
+.dark aside a:not(.active):hover {
+  background-color: #281B22 !important;
+  color: #FFF6EE !important;
+}
+
+.dark aside a:not(.active) svg {
+  color: #D97706 !important;
+}
+
+/* General Background Overrides in Dark Mode */
+.dark .bg-white {
+  background-color: #24181E !important;
+}
+
+.dark .bg-white\/95 {
+  background-color: rgba(36, 24, 30, 0.95) !important;
+}
+
+.dark .bg-white\/90 {
+  background-color: rgba(36, 24, 30, 0.9) !important;
+}
+
+.dark .bg-white\/80 {
+  background-color: rgba(36, 24, 30, 0.8) !important;
+}
+
+.dark .bg-\[\#F7FBFE\] {
+  background-color: #140C14 !important;
+}
+
+.dark .bg-\[\#F4FAFD\] {
+  background-color: #1E1216 !important;
+}
+
+.dark .bg-\[\#E8F8FB\] {
+  background-color: #2E1B20 !important;
+}
+
+.dark .bg-marine-950 {
+  background-color: #140C14 !important;
+}
+
+.dark .bg-marine-900 {
+  background-color: #1A111B !important;
+}
+
+.dark .bg-marine-850 {
+  background-color: #24181E !important;
+}
+
+.dark .bg-marine-800 {
+  background-color: #1E1216 !important;
+}
+
+.dark .border-marine-800,
+.dark .border-marine-750,
+.dark .border-marine-700 {
+  border-color: #452D36 !important;
+}
+
+/* Status: Green Badges in Dark Mode */
+.dark .bg-\[\#EAF8F1\] {
+  background-color: #0C5240 !important;
+  border-color: #047857 !important;
+  color: #10B981 !important;
+}
+
+.dark .bg-\[\#EAF8F1\] span {
+  color: #10B981 !important;
+}
+
+/* SOS Danger Badges in Dark Mode */
+.dark .bg-\[\#FFF0F1\] {
+  background-color: rgba(252, 68, 72, 0.16) !important;
+}
+
+/* Statutory Marine Advisory Card in Dark Mode */
+.dark .bg-\[\#FFFDF5\] {
+  background-color: #261A1D !important;
+  border-color: #D97706 !important;
+}
+
+.dark .bg-\[\#FFFDF5\] h4,
+.dark .bg-\[\#FFFDF5\] strong {
+  color: #FCD34D !important;
+}
+
+.dark .bg-\[\#FFFDF5\] p,
+.dark .bg-\[\#FFFDF5\] span {
+  color: #FDE68A !important;
+}
+
+.dark .bg-\[\#FFFDF5\] .bg-\[\#E8F8FB\] {
+  background-color: #24181E !important;
+  border-color: #452D36 !important;
+  color: #10B981 !important;
+}
+
+.dark .bg-\[\#FFF7E3\] {
+  background-color: rgba(245, 158, 11, 0.16) !important;
+  border-color: rgba(245, 158, 11, 0.35) !important;
+  color: #F59E0B !important;
+}
+
+/* Hero Banner Gradients in Dark Mode */
+.dark .from-\[\#F4FAFD\] {
+  --tw-gradient-from: #261719 var(--tw-gradient-from-position) !important;
+}
+
+.dark .to-\[\#E8F8FB\] {
+  --tw-gradient-to: #39221C var(--tw-gradient-to-position) !important;
+}
+
+.dark .from-\[\#FFF0F1\] {
+  --tw-gradient-from: rgba(252, 68, 72, 0.22) var(--tw-gradient-from-position) !important;
+}
+
+.dark .to-\[\#F7FBFE\] {
+  --tw-gradient-to: #140C14 var(--tw-gradient-to-position) !important;
+}
+
+.dark .to-white {
+  --tw-gradient-to: #24181E var(--tw-gradient-to-position) !important;
+}
+
+/* Text Overrides in Dark Mode */
+.dark .text-\[\#123B6D\] {
+  color: #FFF6EE !important;
+}
+
+.dark .text-\[\#55718D\] {
+  color: #D4C2B6 !important;
+}
+
+.dark .text-\[\#7890A5\] {
+  color: #947F75 !important;
+}
+
+.dark .text-\[\#1769AA\] {
+  color: #F59E0B !important;
+}
+
+.dark .text-\[\#168DCC\] {
+  color: #D97706 !important;
+}
+
+.dark .text-\[\#19B7C9\] {
+  color: #F59E0B !important;
+}
+
+.dark .text-slate-200,
+.dark .text-slate-300 {
+  color: #D4C2B6 !important;
+}
+
+.dark .text-slate-400 {
+  color: #947F75 !important;
+}
+
+.dark .text-slate-100,
+.dark .text-slate-50 {
+  color: #FFF6EE !important;
+}
+
+/* Border Overrides in Dark Mode */
+.dark .border-\[\#D7E7F0\] {
+  border-color: #452D36 !important;
+}
+
+.dark .border-\[\#CFE6EF\],
+.dark .border-\[\#BFD6E4\],
+.dark .border-\[\#C9DDE8\] {
+  border-color: #563943 !important;
+}
+
+.dark .border-\[\#BFE7D1\] {
+  border-color: #047857 !important;
+}
+
+.dark .border-\[\#FCDAD7\],
+.dark .border-\[\#FFD5D8\] {
+  border-color: rgba(252, 68, 72, 0.35) !important;
+}
+
+.dark .border-\[\#F0D98C\] {
+  border-color: #FCD34D !important;
+}
+
+/* =========================================================================
+   FORM INPUTS STYLING
+   ========================================================================= */
+
+/* Light Mode Inputs */
+input[type="text"]:not([class*="bg-"]),
+input[type="password"]:not([class*="bg-"]),
+input[type="email"]:not([class*="bg-"]),
+input[type="number"]:not([class*="bg-"]),
+input[type="search"]:not([class*="bg-"]),
+textarea:not([class*="bg-"]),
+select:not([class*="bg-"]) {
+  background-color: #FFFFFF;
+  border-color: #D7E7F0;
+  color: #123B6D;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #7890A5;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #19B7C9;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(25, 183, 201, 0.2);
+}
+
+/* Dark Mode Inputs */
+.dark input[type="text"]:not([class*="bg-"]),
+.dark input[type="password"]:not([class*="bg-"]),
+.dark input[type="email"]:not([class*="bg-"]),
+.dark input[type="number"]:not([class*="bg-"]),
+.dark input[type="search"]:not([class*="bg-"]),
+.dark textarea:not([class*="bg-"]),
+.dark select:not([class*="bg-"]) {
+  background-color: #1E1218 !important;
+  border-color: #452D36 !important;
+  color: #FFF6EE !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #947F75 !important;
+}
+
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+  border-color: #D9681E !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(192, 86, 21, 0.28) !important;
+}
+
+/* Compass Widget */
+.dark .rounded-full.border-dashed {
+  border-color: #D97706 !important;
+  background-color: #1E1216 !important;
+}
+
+/* Radar Sweep Keyframe */
+@keyframes radarSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar-sweep {
+  animation: radarSpin 3s linear infinite;
+}
+
+/* =========================================================================
+   LEAFLET MAP: Light & Dark Mode
+   ========================================================================= */
+
+/* Light Map */
+.leaflet-container {
+  background: #E8F8FB !important;
+  font-family: inherit !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #FFFFFF !important;
+  color: #123B6D !important;
+  border: 1px solid #D7E7F0 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 8px 32px rgba(18, 59, 109, 0.12) !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-tip {
+  background: #FFFFFF !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.5 !important;
+  color: #123B6D !important;
+}
+
+.leaflet-control-zoom a {
+  background-color: #FFFFFF !important;
+  color: #123B6D !important;
+  border: 1px solid #D7E7F0 !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background-color: #F4FAFD !important;
+  color: #1769AA !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.92) !important;
+  color: #55718D !important;
+  font-size: 10px !important;
+  border-top-left-radius: 6px;
+  backdrop-filter: blur(8px);
+}
+
+.leaflet-control-attribution a {
+  color: #1769AA !important;
+}
+
+/* Dark Map */
+.dark .leaflet-container {
+  background: #140C14 !important;
+}
+
+.dark .leaflet-popup-content-wrapper {
+  background: #24181E !important;
+  color: #FFF6EE !important;
+  border: 1px solid #452D36 !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.65) !important;
+}
+
+.dark .leaflet-popup-tip {
+  background: #24181E !important;
+}
+
+.dark .leaflet-popup-content {
+  color: #FFF6EE !important;
+}
+
+.dark .leaflet-control-zoom a {
+  background-color: #24181E !important;
+  color: #FFF6EE !important;
+  border: 1px solid #452D36 !important;
+}
+
+.dark .leaflet-control-zoom a:hover {
+  background-color: #2E1B20 !important;
+  color: #F59E0B !important;
+}
+
+.dark .leaflet-control-attribution {
+  background: rgba(20, 12, 20, 0.9) !important;
+  color: #D4C2B6 !important;
+}
+
+.dark .leaflet-control-attribution a {
+  color: #F59E0B !important;
+}
+
+/* =========================================================================
+   RECHARTS: Light & Dark Mode
+   ========================================================================= */
+
+/* Light Mode Recharts */
+.recharts-default-tooltip {
+  background-color: #FFFFFF !important;
+  border: 1px solid #D7E7F0 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 8px 24px rgba(18, 59, 109, 0.08) !important;
+}
+
+.recharts-tooltip-label {
+  color: #123B6D !important;
+}
+
+.recharts-tooltip-item {
+  color: #55718D !important;
+}
+
+.recharts-cartesian-grid line {
+  stroke: #E8F0F5 !important;
+}
+
+/* Dark Mode Recharts */
+.dark .recharts-default-tooltip {
+  background-color: #24181E !important;
+  border: 1px solid #452D36 !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55) !important;
+}
+
+.dark .recharts-tooltip-label {
+  color: #FFF6EE !important;
+}
+
+.dark .recharts-tooltip-item {
+  color: #D4C2B6 !important;
+}
+
+.dark .recharts-cartesian-grid line {
+  stroke: #3A232B !important;
+}

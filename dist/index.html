@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/orca-symbol.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ORCA — Ocean Reasoning with Collaborative Agents</title>
+    <meta name="description" content="AI-Powered Marine Intelligence, Potential Fishing Zone (PFZ) Advisories, Multi-Agent Allocation and SOS Emergency Coordination." />
+    
+    <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- Theme Initialization (Prevents FOUC) -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('orca_theme');
+          var isDark = false;
+          if (saved === 'dark') {
+            isDark = true;
+          } else if (saved === 'light') {
+            isDark = false;
+          } else if (saved === 'system') {
+            isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          } else {
+            isDark = true; // default theme
+          }
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.dataset.theme = 'dark';
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.dataset.theme = 'light';
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-BBcUBiJY.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CaR637h7.css">
+  </head>
+  <body class="bg-[#F7FBFE] text-[#123B6D] dark:bg-[#140C14] dark:text-[#FFF6EE] font-sans antialiased selection:bg-[#19B7C9] selection:text-white dark:selection:bg-[#F59E0B] dark:selection:text-[#140C14] min-h-screen overflow-x-hidden transition-colors duration-200">
+    <div id="root"></div>
+  </body>
+</html>
